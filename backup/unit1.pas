@@ -5,7 +5,8 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons,
+  LclType, ShellApi; //include this units (LclType and ShellApi)!!
 
 type
 
@@ -15,6 +16,7 @@ type
     SpeedButton1: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
   private
+    function RunAsAdmin(const Handle1: Hwnd; const Path, Params: string): Boolean;
 
   public
 
@@ -27,11 +29,10 @@ implementation
 
 {$R *.lfm}
 
-uses LclType, ShellApi;
 
 { TForm1 }
 
-function RunAsAdmin(const Handle: Hwnd; const Path, Params: string): Boolean;
+function TForm1.RunAsAdmin(const Handle1: Hwnd; const Path, Params: string): Boolean;
 var
   sei: TShellExecuteInfoA;
 begin
