@@ -32,6 +32,7 @@ implementation
 
 { TForm1 }
 
+//SOURCE: https://stackoverflow.com/questions/15319158/use-shell-execute-to-run-cmd-as-admin
 function TForm1.RunAsAdmin(const Handle1: Hwnd; const Path, Params: string): Boolean;
 var
   sei: TShellExecuteInfoA;
